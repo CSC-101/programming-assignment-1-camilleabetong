@@ -66,7 +66,6 @@ class Rectangle:
         self.top_left = top_left
         self.bottom_right = bottom_right
 
-
     # Provide a developer-friendly string representation of the object.
     # input: Rectangle for which a string representation is desired. 
     # output: string representation
@@ -118,7 +117,7 @@ class Book:
     # Initialize a new Book object.
     # input: the book's authors as a list of strings
     # input: the book's title as a string
-    def __init__(self, authors: list[str], title: str):
+    def __init__(self, title: str, authors: str):
         self.authors = authors
         self.title = title
 
@@ -135,10 +134,9 @@ class Book:
     # input: Another value to compare to the Book
     # output: boolean indicating equality
     def __eq__(self, other):
-        return (self is other or
-                type(other) == Book and
-                self.authors == other.authors and
-                self.title == other.title)
+        if isinstance(other, Book):
+            return self.authors == other.authors
+        return False
 
 
 # Abbreviated representation of an employee.
